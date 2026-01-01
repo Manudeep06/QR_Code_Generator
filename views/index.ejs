@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="app">
+  <div class="card">
+
+    <header>
+      <h1>QR Code Generator</h1>
+      <p>Simple · Elegant · Reliable</p>
+    </header>
+
+    <form action="/generate" method="POST">
+      <input
+        type="text"
+        name="data"
+        placeholder="Enter text or URL"
+        value="<%= data %>"
+        required
+      >
+
+      <div class="row">
+        <select name="size">
+          <option value="200" <%= size==200?"selected":"" %>>Small</option>
+          <option value="260" <%= size==260?"selected":"" %>>Medium</option>
+          <option value="320" <%= size==320?"selected":"" %>>Large</option>
+        </select>
+
+        <div>
+          <label>QR Color</label>
+          <input type="color" name="fgColor" value="<%= fgColor %>">
+        </div>
+
+        <div>
+          <label>Background</label>
+          <input type="color" name="bgColor" value="<%= bgColor %>">
+        </div>
+      </div>
+
+      <button type="submit">Generate QR</button>
+    </form>
+
+    <% if (qrData) { %>
+      <div class="result">
+        <div class="qr-popup">
+          <div class="qr-frame">
+            <img src="<%= qrData %>" alt="QR Code">
+          </div>
+
+          <div class="popup-actions">
+            <a class="btn navy" href="<%= qrData %>" download="qrcode.png">PNG</a>
+            <a class="btn terra"
+               href="/download-pdf?data=<%= encodeURIComponent(data) %>&fgColor=<%= fgColor %>&bgColor=<%= bgColor %>">
+               PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+  </div>
+</div>
+
+</body>
+</html>
