@@ -17,55 +17,81 @@ body {
   background: linear-gradient(135deg, var(--navy), var(--olive));
 }
 
+/* Center properly on mobile */
 .app {
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  padding: 60px 16px;
+  align-items: center;
+  padding: 24px 12px;
 }
 
+/* Card */
 .card {
-  width: 420px;
+  width: 100%;
+  max-width: 420px;
   background: var(--white);
   border-radius: 20px;
-  padding: 32px;
+  padding: 24px;
   box-shadow: 0 30px 60px rgba(0,0,0,0.25);
 }
 
+/* Header */
 header {
   text-align: center;
-  margin-bottom: 26px;
+  margin-bottom: 22px;
 }
 
 header h1 {
   margin: 0;
   color: var(--navy);
+  font-size: 22px;
 }
 
 header p {
   margin-top: 6px;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--olive);
 }
 
+/* Inputs */
 input, select {
   width: 100%;
-  padding: 12px 14px;
+  padding: 8px 12px;
   border-radius: 12px;
   border: 1px solid var(--olive);
-  margin-bottom: 16px;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 10px;
+  margin-bottom: 14px;
+  font-size: 14px;
+  height: 38px;
 }
 
 label {
   font-size: 11px;
   color: var(--navy);
+  margin-bottom: 4px;
+  display: block;
 }
 
+/* Controls: size + colors in one line */
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 10px;
+  align-items: end;
+}
+
+/* Color pickers side by side */
+.color-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.color-row input[type="color"] {
+  padding: 4px;
+}
+
+/* Button */
 button {
   width: 100%;
   padding: 14px;
@@ -75,18 +101,22 @@ button {
   color: var(--navy);
   font-weight: 600;
   cursor: pointer;
+  font-size: 15px;
 }
 
+/* Result */
 .result {
-  margin-top: 36px;
+  margin-top: 28px;
   display: flex;
   justify-content: center;
 }
 
+/* Popup */
 .qr-popup {
+  width: 100%;
   background: #f9fafb;
-  border-radius: 20px;
-  padding: 28px;
+  border-radius: 18px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,25 +124,30 @@ button {
 
 .qr-frame {
   background: var(--white);
-  padding: 18px;
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  margin-bottom: 22px;
+  padding: 14px;
+  border-radius: 16px;
+  box-shadow: 0 16px 32px rgba(0,0,0,0.15);
+  margin-bottom: 16px;
 }
 
 .qr-frame img {
-  width: 220px;
-  height: 220px;
-  border-radius: 12px;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  border-radius: 10px;
 }
 
+/* Actions */
 .popup-actions {
+  width: 100%;
   display: flex;
-  gap: 14px;
+  gap: 12px;
 }
 
 .btn {
-  padding: 10px 26px;
+  flex: 1;
+  text-align: center;
+  padding: 12px 0;
   border-radius: 999px;
   font-size: 13px;
   font-weight: 600;
@@ -126,4 +161,12 @@ button {
 
 .btn.terra {
   background: var(--terra);
+}
+
+/* Desktop enhancement */
+@media (min-width: 768px) {
+  .app {
+    align-items: flex-start;
+    padding-top: 60px;
+  }
 }

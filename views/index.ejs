@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>QR Code Generator</title>
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8">
+  <title>QR Code Generator</title>
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 
@@ -16,6 +16,7 @@
     </header>
 
     <form action="/generate" method="POST">
+
       <input
         type="text"
         name="data"
@@ -24,21 +25,23 @@
         required
       >
 
-      <div class="row">
+      <div class="controls">
         <select name="size">
           <option value="200" <%= size==200?"selected":"" %>>Small</option>
           <option value="260" <%= size==260?"selected":"" %>>Medium</option>
           <option value="320" <%= size==320?"selected":"" %>>Large</option>
         </select>
 
-        <div>
-          <label>QR Color</label>
-          <input type="color" name="fgColor" value="<%= fgColor %>">
-        </div>
+        <div class="color-row">
+          <div>
+            <label>QR Color</label>
+            <input type="color" name="fgColor" value="<%= fgColor %>">
+          </div>
 
-        <div>
-          <label>Background</label>
-          <input type="color" name="bgColor" value="<%= bgColor %>">
+          <div>
+            <label>Background</label>
+            <input type="color" name="bgColor" value="<%= bgColor %>">
+          </div>
         </div>
       </div>
 
@@ -56,7 +59,7 @@
             <a class="btn navy" href="<%= qrData %>" download="qrcode.png">PNG</a>
             <a class="btn terra"
                href="/download-pdf?data=<%= encodeURIComponent(data) %>&fgColor=<%= fgColor %>&bgColor=<%= bgColor %>">
-               PDF
+              PDF
             </a>
           </div>
         </div>
